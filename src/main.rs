@@ -1,9 +1,10 @@
 pub mod heap;
 pub mod lru;
+pub mod trie;
 
 use heap::*;
-use lru::*;
-
+use heap::*;
+use trie::*;
 // fn main() {
 //     let mut cache = LRUCache::new(3);
 
@@ -73,25 +74,43 @@ use lru::*;
 //     cache.print_state();
 // }
 
-fn main() {
-    let mut heap: BinaryHeap<u8> = BinaryHeap::new();
+// fn main() {
+//     let mut heap: BinaryHeap<u8> = BinaryHeap::new();
 
-    heap.push(5);
-    heap.push(8);
-    heap.push(3);
-    heap.push(10);
+//     heap.push(5);
+//     heap.push(8);
+//     heap.push(3);
+//     heap.push(10);
 
-    println!("Heap: {:?}", heap);
+//     println!("Heap: {:?}", heap);
 
-    heap.push(15);
-    println!("Heap: {:?}", heap);
+//     heap.push(15);
+//     println!("Heap: {:?}", heap);
 
-    heap.push(6);
-    println!("Heap: {:?}", heap);
+//     heap.push(6);
+//     println!("Heap: {:?}", heap);
 
-    heap.push(7);
-    println!("Heap: {:?}", heap);
+//     heap.push(7);
+//     println!("Heap: {:?}", heap);
 
-    heap.pop();
-    println!("Heap {:?}", heap);
+//     heap.pop();
+//     println!("Heap {:?}", heap);
+// }
+
+pub fn main() {
+    let mut trie = Trie::new();
+
+    trie.insert("cat");
+    trie.insert("cap");
+    trie.insert("cartoon");
+
+    trie.print_tree();
+
+    println!("Search 'car': {}", trie.search("car"));
+    println!("Search 'cat': {}", trie.search("cat"));
+    println!("Search 'cap': {}", trie.search("cap"));
+    println!("Search 'cartoon': {}", trie.search("cartoon"));
+
+    println!("Starts with 'ca': {}", trie.starts_with("ca"));
+    println!("Starts with 'car': {}", trie.starts_with("car"));
 }
